@@ -11,7 +11,7 @@ public class SequenceParserTests
     {
         var digitParser = new DigitParser();
         var letterParser = new LetterParser();
-        var parser = new SequenceParser(digitParser, letterParser);
+        var parser = digitParser.And(letterParser);
 
         var inputText = "1a";
         await parser.ParseAsync(inputText).ShouldBeSuccessful(inputText);
@@ -22,7 +22,7 @@ public class SequenceParserTests
     {
         var digitParser = new DigitParser();
         var letterParser = new LetterParser();
-        var parser = new SequenceParser(digitParser, letterParser);
+        var parser = digitParser.And(letterParser);
 
         var inputText = "2-";
         await parser.ParseAsync(inputText).ShouldNotBeSuccessful();
