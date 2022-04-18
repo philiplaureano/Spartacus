@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Spartacus.Core;
 using Xunit;
 
@@ -13,7 +12,7 @@ public class AlternativeParserTests
         var fizz = new StringParser("fizz");
         var buzz = new StringParser("buzz");
 
-        var parser = new AlternativeParser(fizz, buzz);
+        var parser = fizz.Or(buzz);
         await parser.ParseAsync("buzz").ShouldBeSuccessful("buzz");
         await parser.ParseAsync("fizz").ShouldBeSuccessful("fizz");
     }
@@ -24,7 +23,7 @@ public class AlternativeParserTests
         var fizz = new StringParser("fizz");
         var buzz = new StringParser("buzz");
 
-        var parser = new AlternativeParser(fizz, buzz);
+        var parser = fizz.Or(buzz);
         await parser.ParseAsync("beep").ShouldNotBeSuccessful();
     }
 }
