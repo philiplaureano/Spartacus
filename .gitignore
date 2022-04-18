@@ -351,3 +351,6 @@ MigrationBackup/
 
 # IntelliJ IDEA files (resharper)
 .idea/
+
+# Ignore the scratch project
+Scratch/
