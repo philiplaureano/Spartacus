@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Spartacus.Core;
 using Xunit;
 
@@ -26,5 +27,14 @@ public class SequenceParserTests
 
         var inputText = "2-";
         await parser.ParseAsync(inputText).ShouldNotBeSuccessful();
+    }
+
+    [Fact(DisplayName = "The sequence parser should allow for multiple repeat instances (using syntactic sugar)")]
+    public async Task ShouldAllowRepeats()
+    {
+        var digitParser = new DigitParser();
+        var parser = digitParser.Repeat(4);
+
+        await parser.ParseAsync("1234").ShouldBeSuccessful("1234");
     }
 }
