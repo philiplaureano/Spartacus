@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Spartacus.Core;
+using Spartacus.Core.Composites;
+using Spartacus.Core.Primitives;
 using Xunit;
 
 namespace Tests;

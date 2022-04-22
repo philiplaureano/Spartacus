@@ -1,4 +1,4 @@
-﻿namespace Spartacus.Core;
+﻿namespace Spartacus.Core.Composites;
 
 public static class Ops
 {

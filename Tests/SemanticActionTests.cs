@@ -3,6 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using FakeItEasy;
 using Spartacus.Core;
+using Spartacus.Core.Actions;
+using Spartacus.Core.Primitives;
 using Xunit;
 
 namespace Tests;

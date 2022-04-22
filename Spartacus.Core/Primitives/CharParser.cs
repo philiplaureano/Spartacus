@@ -1,4 +1,4 @@
-﻿namespace Spartacus.Core;
+﻿namespace Spartacus.Core.Primitives;
 
 public class CharParser : SingleCharParser
 {

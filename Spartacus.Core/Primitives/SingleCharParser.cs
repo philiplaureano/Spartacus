@@ -1,6 +1,6 @@
 ﻿using Optional;
 
-namespace Spartacus.Core;
+namespace Spartacus.Core.Primitives;
 
 public abstract class SingleCharParser : IParser
 {

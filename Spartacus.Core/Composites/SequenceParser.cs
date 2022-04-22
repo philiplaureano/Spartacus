@@ -2,7 +2,7 @@
 using Optional;
 using Optional.Unsafe;
 
-namespace Spartacus.Core;
+namespace Spartacus.Core.Composites;
 
 public class SequenceParser : IParser
 {

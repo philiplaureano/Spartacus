@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Optional.Unsafe;
 using Spartacus.Core;
+using Spartacus.Core.Primitives;
 using Xunit;
 
 namespace Tests;

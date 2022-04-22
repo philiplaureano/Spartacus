@@ -1,6 +1,6 @@
 ﻿using Optional;
 
-namespace Spartacus.Core;
+namespace Spartacus.Core.Actions;
 
 internal class TriggerActionOnFailure : IParser
 {

@@ -1,4 +1,4 @@
-﻿namespace Spartacus.Core;
+﻿namespace Spartacus.Core.Actions;
 
 public static class SemanticActionExtensions
 {

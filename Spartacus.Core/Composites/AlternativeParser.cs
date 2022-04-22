@@ -1,6 +1,6 @@
 ﻿using Optional;
 
-namespace Spartacus.Core;
+namespace Spartacus.Core.Composites;
 
 public class AlternativeParser : IParser
 {

@@ -1,7 +1,7 @@
 ﻿using Optional;
 using Optional.Unsafe;
 
-namespace Spartacus.Core;
+namespace Spartacus.Core.Actions;
 
 internal class TriggerActionOnSuccess : IParser
 {
