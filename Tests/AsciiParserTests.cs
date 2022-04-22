@@ -25,8 +25,22 @@ public class AsciiParserTests
     {
         var random = new Random();
         var nonAsciiRange = new Range(0x7f, 0xffff);
-        var charValue = random.Next(nonAsciiRange.Start.Value, nonAsciiRange.End.Value);
+        
+        int GetNextValue()
+        {
+            var result = random.Next(nonAsciiRange.Start.Value, nonAsciiRange.End.Value);
+            var surrogateCodePointRange = new Range(0x00d800, 0x00dfff);
             
+            // Skip the surrogate codepoint values
+            while (result >= surrogateCodePointRange.Start.Value && result <= surrogateCodePointRange.End.Value)
+            {
+                result = GetNextValue();
+            }
+            
+            return result;
+        }
+
+        var charValue = GetNextValue();
         var input = char.ConvertFromUtf32(charValue);
         
         var parser = new AsciiParser();
