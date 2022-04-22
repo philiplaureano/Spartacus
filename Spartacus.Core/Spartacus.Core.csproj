@@ -1,10 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <Title>Spartacus</Title>
+        <PackageId>Laureano.Spartacus.Core</PackageId>
         <TargetFramework>net6.0</TargetFramework>
+        <Description>A parsing library for .NET</Description>
+        <Copyright>Copyright (C) Philip Laureano 2022</Copyright>
+        <PackageProjectUrl>https://github.com/philiplaureano/spartacus</PackageProjectUrl>
+        <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/philiplaureano/spartacus</RepositoryUrl>
+        <PackageTags>parsers csharp</PackageTags>
+        <Product>Laureano.Spartacus.Core</Product>
+        <Version>1.0.0</Version>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>preview</LangVersion>
+        <AssemblyVersion>$(Version)</AssemblyVersion>
+        <FileVersion>$(Version)</FileVersion>
+        <TargetFrameworks>net6.0;netstandard2.0;netstandard2.1</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
