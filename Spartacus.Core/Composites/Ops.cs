@@ -1,7 +1,21 @@
-﻿namespace Spartacus.Core.Composites;
+﻿using Spartacus.Core.Primitives;
+
+namespace Spartacus.Core.Composites;
 
 public static class Ops
 {
+    public static AlternativeParser Or(params string[] choices)
+    {
+        var otherParsers = choices.Select(t => new StringParser(t)).Cast<IParser>().ToArray();
+        return new AlternativeParser(otherParsers);
+    }
+    
+    public static AlternativeParser Or(this IParser parser, params string[] choices)
+    {
+        var otherParsers = choices.Select(t => new StringParser(t)).Cast<IParser>().ToArray();
+        return Or(parser, otherParsers);
+    }
+
     public static AlternativeParser Or(this IParser parser, params IParser[] parsers)
     {
         if (parsers == null) throw new ArgumentNullException(nameof(parsers));
@@ -11,6 +25,7 @@ public static class Ops
 
         return new AlternativeParser(otherParsers.ToArray());
     }
+
     public static SequenceParser And(this IParser parser, params IParser[] parsers)
     {
         if (parsers == null) throw new ArgumentNullException(nameof(parsers));
@@ -19,6 +34,7 @@ public static class Ops
         combinedParsers.AddRange(parsers);
         return new SequenceParser(combinedParsers.ToArray());
     }
+
     public static KleeneStarParser ZeroOrMoreInstances(this IParser parser)
     {
         return new KleeneStarParser(parser);
