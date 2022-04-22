@@ -28,6 +28,6 @@ public class PlusParserTests
         var letterParser = new LetterParser();
         var parser = letterParser.OneOrMoreInstances();
 
-        await parser.ParseAsync("123").ShouldNotBeSuccessful();
+        await parser.ParseAsync("123").ShouldFail();
     }
 }

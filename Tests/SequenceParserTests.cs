@@ -28,7 +28,7 @@ public class SequenceParserTests
         var parser = digitParser.And(letterParser);
 
         var inputText = "2-";
-        await parser.ParseAsync(inputText).ShouldNotBeSuccessful();
+        await parser.ParseAsync(inputText).ShouldFail();
     }
 
     [Fact(DisplayName = "The sequence parser should allow for multiple repeat instances (using syntactic sugar)")]

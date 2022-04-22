@@ -35,7 +35,7 @@ public static class SingleCharParserTester
         Assert.NotEmpty(invalidChars);
 
         var selectedChar = PickRandomChar(invalidChars);
-        await parser.ParseAsync(selectedChar.ToString()).ShouldNotBeSuccessful();
+        await parser.ParseAsync(selectedChar.ToString()).ShouldFail();
     }
 
     public static IEnumerable<char> GetNonApplicableChars(Func<char, bool> checkCharacter)

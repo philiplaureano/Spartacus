@@ -31,6 +31,6 @@ public class LetterParserTests
     {
         var parser = new LetterParser();
         var invalidText = "5";
-        await parser.ParseAsync(invalidText).ShouldNotBeSuccessful();
+        await parser.ParseAsync(invalidText).ShouldFail();
     }
 }

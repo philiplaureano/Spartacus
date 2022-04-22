@@ -24,6 +24,6 @@ public class StringParserTests
         var invalidPhrase = Guid.NewGuid().ToString() + Guid.NewGuid().ToString();
         
         IParser parser = new StringParser(expectedPhrase);
-        await parser.ParseAsync(invalidPhrase).ShouldNotBeSuccessful();
+        await parser.ParseAsync(invalidPhrase).ShouldFail();
     }
 }

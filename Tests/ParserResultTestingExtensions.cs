@@ -26,7 +26,7 @@ public static class ParserResultTestingExtensions
         return result;
     }
 
-    public static async ValueTask ShouldNotBeSuccessful(this ValueTask<Option<ReadOnlyMemory<char>>> parseTask)
+    public static async ValueTask ShouldFail(this ValueTask<Option<ReadOnlyMemory<char>>> parseTask)
     {
         var result = await parseTask;
         Assert.False(result.HasValue);
@@ -34,6 +34,6 @@ public static class ParserResultTestingExtensions
 
     public static async ValueTask ShouldReturnNothingOnEmptyString(this IParser parser)
     {
-        await parser.ParseAsync(string.Empty).ShouldNotBeSuccessful();
+        await parser.ParseAsync(string.Empty).ShouldFail();
     }
 }

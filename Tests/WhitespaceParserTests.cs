@@ -20,7 +20,7 @@ public class WhitespaceParserTests
     {
         var invalidInput = "X";
         var parser = new WhitespaceParser();
-        await parser.ParseAsync(invalidInput).ShouldNotBeSuccessful();
+        await parser.ParseAsync(invalidInput).ShouldFail();
     }
     
     [Fact(DisplayName = "The whitespace parser should not parse empty strings")]
@@ -28,6 +28,6 @@ public class WhitespaceParserTests
     {
         var text = string.Empty;
         var parser = new WhitespaceParser();
-        await parser.ParseAsync(text).ShouldNotBeSuccessful();
+        await parser.ParseAsync(text).ShouldFail();
     }
 }

@@ -41,7 +41,7 @@ public class SemanticActionTests
 
         var parserWithActions = parser.WithActionTriggeredOnFailure(Handler);
 
-        await parserWithActions.ParseAsync("abcd").ShouldNotBeSuccessful();
+        await parserWithActions.ParseAsync("abcd").ShouldFail();
         wasHandlerCalled.WaitOne(TimeSpan.FromSeconds(1));
     }
 
@@ -59,7 +59,7 @@ public class SemanticActionTests
         }
         
         var parserWithActions = parser.WithActionTriggeredOnException<InvalidOperationException>(Handler);
-        await parserWithActions.ParseAsync("abcd").ShouldNotBeSuccessful();
+        await parserWithActions.ParseAsync("abcd").ShouldFail();
         
         wasHandlerCalled.WaitOne(TimeSpan.FromSeconds(1));
     }

@@ -30,6 +30,6 @@ public class AsciiParserTests
         var input = char.ConvertFromUtf32(charValue);
         
         var parser = new AsciiParser();
-        await parser.ParseAsync(input).ShouldNotBeSuccessful();
+        await parser.ParseAsync(input).ShouldFail();
     }
 }

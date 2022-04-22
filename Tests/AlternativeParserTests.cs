@@ -26,6 +26,6 @@ public class AlternativeParserTests
         var buzz = new StringParser("buzz");
 
         var parser = fizz.Or(buzz);
-        await parser.ParseAsync("beep").ShouldNotBeSuccessful();
+        await parser.ParseAsync("beep").ShouldFail();
     }
 }
