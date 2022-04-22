@@ -17,7 +17,7 @@ public class SemanticActionTests
         var wasHandlerCalled = new ManualResetEvent(false);
         var parser = new DigitParser();
 
-        void Handler(IParser currentParser, string input, string parsedValue)
+        void Handler(string parsedValue)
         {
             wasHandlerCalled.Set();
         }

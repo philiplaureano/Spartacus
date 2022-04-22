@@ -3,6 +3,17 @@
 public static class SemanticActionExtensions
 {
     public static IParser WithActionTriggeredOnSuccess(this IParser parser,
+        Action<string> actionHandler)
+    {
+        void HandlerAdapter(IParser currentParser, string input, string parsedInput)
+        {
+            actionHandler(parsedInput);
+        }
+
+        return parser.WithActionTriggeredOnSuccess(HandlerAdapter);
+    }
+
+    public static IParser WithActionTriggeredOnSuccess(this IParser parser,
         Action<IParser, string, string> actionHandler)
     {
         void HandlerAdapter(IParser currentParser, ReadOnlyMemory<char> input, ReadOnlyMemory<char> parsedInput)
@@ -18,7 +29,7 @@ public static class SemanticActionExtensions
     {
         return new TriggerActionOnSuccess(parser, actionHandler);
     }
-
+    
     public static IParser WithActionTriggeredOnFailure(this IParser parser,
         Action<IParser, string> actionHandler)
     {
