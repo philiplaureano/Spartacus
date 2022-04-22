@@ -6,9 +6,9 @@ internal class TriggerActionOnException<TException> : IParser
     where TException : Exception
 {
     private readonly IParser _parser;
-    private readonly Action<IParser, ReadOnlyMemory<char>, Exception> _exceptionHandler;
+    private readonly Action<IParser, ReadOnlyMemory<char>, TException> _exceptionHandler;
 
-    public TriggerActionOnException(IParser parser, Action<IParser, ReadOnlyMemory<char>, Exception> exceptionHandler)
+    public TriggerActionOnException(IParser parser, Action<IParser, ReadOnlyMemory<char>, TException> exceptionHandler)
     {
         _parser = parser;
         _exceptionHandler = exceptionHandler;

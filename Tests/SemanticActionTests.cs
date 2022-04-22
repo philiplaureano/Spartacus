@@ -17,15 +17,15 @@ public class SemanticActionTests
         var wasHandlerCalled = new ManualResetEvent(false);
         var parser = new DigitParser();
 
-        void Handler(IParser currentParser, ReadOnlyMemory<char> input, ReadOnlyMemory<char> parsedValue)
+        void Handler(IParser currentParser, string input, string parsedValue)
         {
             wasHandlerCalled.Set();
         }
-        
+
         var parserWithActions = parser.WithActionTriggeredOnSuccess(Handler);
 
         await parserWithActions.ParseAsync("1").ShouldBeSuccessful();
-        wasHandlerCalled.WaitOne(TimeSpan.FromSeconds(1));
+        Assert.True(wasHandlerCalled.WaitOne(TimeSpan.FromSeconds(1)));
     }
 
     [Fact(DisplayName = "We should be able to trigger an action if a parse fails")]
@@ -34,7 +34,7 @@ public class SemanticActionTests
         var wasHandlerCalled = new ManualResetEvent(false);
         var parser = new DigitParser();
 
-        void Handler(IParser currentParser, ReadOnlyMemory<char> input)
+        void Handler(IParser currentParser, string input)
         {
             wasHandlerCalled.Set();
         }
@@ -42,7 +42,7 @@ public class SemanticActionTests
         var parserWithActions = parser.WithActionTriggeredOnFailure(Handler);
 
         await parserWithActions.ParseAsync("abcd").ShouldFail();
-        wasHandlerCalled.WaitOne(TimeSpan.FromSeconds(1));
+        Assert.True(wasHandlerCalled.WaitOne(TimeSpan.FromSeconds(1)));
     }
 
     [Fact(DisplayName = "We should be able to trigger an action if an exception is thrown")]
@@ -53,14 +53,14 @@ public class SemanticActionTests
         A.CallTo(() => parser.ParseAsync(A<ReadOnlyMemory<char>>._))
             .Throws<InvalidOperationException>();
 
-        void Handler(IParser currentParser, ReadOnlyMemory<char> input, Exception exceptionThrown)
+        void Handler(IParser currentParser, string input, Exception exceptionThrown)
         {
             wasHandlerCalled.Set();
         }
-        
+
         var parserWithActions = parser.WithActionTriggeredOnException<InvalidOperationException>(Handler);
         await parserWithActions.ParseAsync("abcd").ShouldFail();
-        
-        wasHandlerCalled.WaitOne(TimeSpan.FromSeconds(1));
+
+        Assert.True(wasHandlerCalled.WaitOne(TimeSpan.FromSeconds(1)));
     }
 }
