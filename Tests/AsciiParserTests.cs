@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Spartacus.Core;
 using Spartacus.Core.Primitives;
 using Xunit;
+using static Spartacus.Core.Parsers;
 
 namespace Tests;
 
@@ -16,7 +17,7 @@ public class AsciiParserTests
         var charValue = random.Next(asciiRange.Start.Value, asciiRange.End.Value);
         var input = char.ConvertFromUtf32(charValue);
         
-        var parser = new AsciiParser();
+        var parser = Ascii;
         await parser.ParseAsync(input).ShouldBeSuccessful();
     }
 
@@ -43,7 +44,7 @@ public class AsciiParserTests
         var charValue = GetNextValue();
         var input = char.ConvertFromUtf32(charValue);
         
-        var parser = new AsciiParser();
+        var parser = Ascii;
         await parser.ParseAsync(input).ShouldFail();
     }
 }

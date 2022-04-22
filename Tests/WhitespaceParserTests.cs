@@ -2,7 +2,7 @@
 using Spartacus.Core;
 using Spartacus.Core.Primitives;
 using Xunit;
-
+using static Spartacus.Core.Parsers;
 namespace Tests;
 
 public class WhitespaceParserTests
@@ -11,7 +11,7 @@ public class WhitespaceParserTests
     public async Task ShouldParseWhitespaceChars()
     {
         var whitespace = " ";
-        var parser = new WhitespaceParser();
+        var parser = Whitespace;
         await parser.ParseAsync(whitespace).ShouldBeSuccessful(" ");
     }
 
@@ -19,7 +19,7 @@ public class WhitespaceParserTests
     public async Task ShouldNotParseInvalidInput()
     {
         var invalidInput = "X";
-        var parser = new WhitespaceParser();
+        var parser = Whitespace;
         await parser.ParseAsync(invalidInput).ShouldFail();
     }
     
@@ -27,7 +27,7 @@ public class WhitespaceParserTests
     public async Task ShouldNotParseEmptyStrings()
     {
         var text = string.Empty;
-        var parser = new WhitespaceParser();
+        var parser = Whitespace;
         await parser.ParseAsync(text).ShouldFail();
     }
 }

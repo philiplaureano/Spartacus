@@ -4,6 +4,7 @@ using Spartacus.Core;
 using Spartacus.Core.Primitives;
 using Xunit;
 
+using static Spartacus.Core.Parsers;
 namespace Tests;
 
 public class StringParserTests
@@ -12,7 +13,7 @@ public class StringParserTests
     public async Task ShouldBeAbleToParseStringPhrase()
     {
         var phrase = Guid.NewGuid().ToString();
-        IParser parser = new StringParser(phrase);
+        IParser parser = String(phrase);
 
         await parser.ParseAsync(phrase).ShouldBeSuccessful(phrase);
     }
@@ -23,7 +24,7 @@ public class StringParserTests
         var expectedPhrase = Guid.NewGuid().ToString();
         var invalidPhrase = Guid.NewGuid().ToString() + Guid.NewGuid().ToString();
         
-        IParser parser = new StringParser(expectedPhrase);
+        IParser parser = String(expectedPhrase);
         await parser.ParseAsync(invalidPhrase).ShouldFail();
     }
 }
