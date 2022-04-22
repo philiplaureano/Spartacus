@@ -18,8 +18,9 @@
         <AssemblyVersion>$(Version)</AssemblyVersion>
         <FileVersion>$(Version)</FileVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>1.0.2</PackageVersion>
+        <PackageVersion>1.0.3</PackageVersion>
         <TargetFramework>net6.0</TargetFramework>
+        <Authors>Philip Laureano</Authors>
     </PropertyGroup>
 
     <ItemGroup>
