@@ -4,8 +4,8 @@ namespace Spartacus.Core.Actions;
 
 internal class TriggerActionOnFailure : IParser
 {
-    private readonly IParser _parser;
     private readonly Action<IParser, ReadOnlyMemory<char>> _actionHandler;
+    private readonly IParser _parser;
 
     public TriggerActionOnFailure(IParser parser, Action<IParser, ReadOnlyMemory<char>> actionHandler)
     {
@@ -18,7 +18,7 @@ internal class TriggerActionOnFailure : IParser
         var result = await _parser.ParseAsync(input);
         if (!result.HasValue)
             _actionHandler(_parser, input);
-        
+
         return result;
     }
 }

@@ -5,8 +5,8 @@ namespace Spartacus.Core.Actions;
 internal class TriggerActionOnException<TException> : IParser
     where TException : Exception
 {
-    private readonly IParser _parser;
     private readonly Action<IParser, ReadOnlyMemory<char>, TException> _exceptionHandler;
+    private readonly IParser _parser;
 
     public TriggerActionOnException(IParser parser, Action<IParser, ReadOnlyMemory<char>, TException> exceptionHandler)
     {

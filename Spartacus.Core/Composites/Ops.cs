@@ -1,18 +1,16 @@
-﻿using Spartacus.Core.Primitives;
-
-namespace Spartacus.Core.Composites;
+﻿namespace Spartacus.Core.Composites;
 
 public static class Ops
 {
     public static AlternativeParser Or(params string[] choices)
     {
-        var otherParsers = choices.Select(t => new StringParser(t)).Cast<IParser>().ToArray();
+        var otherParsers = choices.ToParserArray();
         return new AlternativeParser(otherParsers);
     }
-    
+
     public static AlternativeParser Or(this IParser parser, params string[] choices)
     {
-        var otherParsers = choices.Select(t => new StringParser(t)).Cast<IParser>().ToArray();
+        var otherParsers = choices.ToParserArray();
         return Or(parser, otherParsers);
     }
 
@@ -24,6 +22,18 @@ public static class Ops
         otherParsers.AddRange(parsers);
 
         return new AlternativeParser(otherParsers.ToArray());
+    }
+
+    public static SequenceParser And(params string[] strings)
+    {
+        var parsers = strings.ToParserArray();
+        return new SequenceParser(parsers);
+    }
+
+    public static SequenceParser And(this IParser parser, params string[] strings)
+    {
+        var otherParsers = strings.ToParserArray();
+        return parser.And(otherParsers);
     }
 
     public static SequenceParser And(this IParser parser, params IParser[] parsers)

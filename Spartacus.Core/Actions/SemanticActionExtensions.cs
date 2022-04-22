@@ -23,13 +23,13 @@ public static class SemanticActionExtensions
 
         return parser.WithActionTriggeredOnSuccess(HandlerAdapter);
     }
-    
+
     public static IParser WithActionTriggeredOnSuccess(this IParser parser,
         Action<IParser, ReadOnlyMemory<char>, ReadOnlyMemory<char>> actionHandler)
     {
         return new TriggerActionOnSuccess(parser, actionHandler);
     }
-    
+
     public static IParser WithActionTriggeredOnFailure(this IParser parser,
         Action<IParser, string> actionHandler)
     {
@@ -58,6 +58,7 @@ public static class SemanticActionExtensions
 
         return parser.WithActionTriggeredOnException<TException>(HandlerAdapter);
     }
+
     public static IParser WithActionTriggeredOnException<TException>(this IParser parser,
         Action<IParser, ReadOnlyMemory<char>, TException> handler)
         where TException : Exception

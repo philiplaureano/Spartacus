@@ -27,16 +27,16 @@ public class SequenceParser : IParser
             if (!result.HasValue)
                 return Option.None<ReadOnlyMemory<char>>();
 
-            if (!result.HasValue) 
+            if (!result.HasValue)
                 continue;
-            
+
             var currentValue = result.ValueOrFailure();
             parsedValues.Append(currentValue);
 
             numberOfCharsRead += currentValue.Length;
             nextInput = input[numberOfCharsRead..];
         }
-        
+
         var combinedValues = parsedValues.ToString();
         return Option.Some(combinedValues.AsMemory());
     }

@@ -23,7 +23,7 @@ public class AlternativeParser : IParser
             if (result.HasValue)
                 return result;
         }
-        
+
         return Option.None<ReadOnlyMemory<char>>();
     }
 }
