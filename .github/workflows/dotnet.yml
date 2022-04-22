@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore Spartacus/Spartacus.sln
+      run: dotnet restore Spartacus.sln
     - name: Build
-      run: dotnet build Spartacus/Spartacus.sln --no-restore
+      run: dotnet build Spartacus.sln --no-restore
     - name: Test
-      run: dotnet test Spartacus/Spartacus.sln --no-build --verbosity normal
+      run: dotnet test Spartacus.sln --no-build --verbosity normal
