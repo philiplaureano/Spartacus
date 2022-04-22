@@ -53,12 +53,14 @@ public class SemanticActionTests
         A.CallTo(() => parser.ParseAsync(A<ReadOnlyMemory<char>>._))
             .Throws<InvalidOperationException>();
 
-        void Handler(IParser parser, ReadOnlyMemory<char> input, Exception exceptionThrown)
+        void Handler(IParser currentParser, ReadOnlyMemory<char> input, Exception exceptionThrown)
         {
             wasHandlerCalled.Set();
         }
         
         var parserWithActions = parser.WithActionTriggeredOnException<InvalidOperationException>(Handler);
+        await parserWithActions.ParseAsync("abcd").ShouldNotBeSuccessful();
+        
         wasHandlerCalled.WaitOne(TimeSpan.FromSeconds(1));
     }
 }
