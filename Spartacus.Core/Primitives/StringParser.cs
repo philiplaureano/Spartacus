@@ -1,4 +1,5 @@
 ﻿using Optional;
+#pragma warning disable CS1998
 
 namespace Spartacus.Core.Primitives;
 
@@ -23,8 +24,10 @@ public class StringParser : IParser
         var slice = input.Slice(0, maxLength);
         var inputText = slice.ToString();
 
-        return string.CompareOrdinal(_phrase, inputText) == 0
+        var result = string.CompareOrdinal(_phrase, inputText) == 0
             ? Option.Some(inputText.AsMemory())
             : Option.None<ReadOnlyMemory<char>>();
+        
+        return result;
     }
 }

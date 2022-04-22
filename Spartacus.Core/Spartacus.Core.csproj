@@ -7,7 +7,7 @@
         <Description>A parsing library for .NET</Description>
         <Copyright>Copyright (C) Philip Laureano 2022</Copyright>
         <PackageProjectUrl>https://github.com/philiplaureano/spartacus</PackageProjectUrl>
-        <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+        <PackageLicense>https://opensource.org/licenses/MIT</PackageLicense>
         <RepositoryUrl>https://github.com/philiplaureano/spartacus</RepositoryUrl>
         <PackageTags>parsers csharp</PackageTags>
         <Product>Laureano.Spartacus.Core</Product>
@@ -17,9 +17,9 @@
         <LangVersion>preview</LangVersion>
         <AssemblyVersion>$(Version)</AssemblyVersion>
         <FileVersion>$(Version)</FileVersion>
-        <TargetFramework>net6.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageVersion>1.0.1</PackageVersion>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
