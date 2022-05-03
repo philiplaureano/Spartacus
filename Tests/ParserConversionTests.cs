@@ -32,4 +32,13 @@ public class ParserConversionTests
         Assert.Equal(expectedReturnValue,result.ValueOrFailure().ToString());
         Assert.True(wasParserCalled.WaitOne(TimeSpan.FromSeconds(2)));
     }
+
+    [Fact(DisplayName = "We should be able to convert a literal string into a string parser")]
+    public async Task ShouldBeAbleToConvertLiteralStringIntoStringParser()
+    {
+        var phrase = Guid.NewGuid().ToString();
+
+        IParser parser = phrase.AsParser();
+        await parser.ParseAsync(phrase).ShouldBeSuccessful(phrase);
+    }
 }

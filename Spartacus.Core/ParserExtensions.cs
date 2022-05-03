@@ -1,5 +1,6 @@
 ﻿using Optional;
 using Spartacus.Core.Adapters;
+using Spartacus.Core.Primitives;
 
 namespace Spartacus.Core;
 
@@ -14,6 +15,11 @@ public static class ParserExtensions
         return await parser.ParseAsync(memory);
     }
 
+    public static IParser AsParser(this string phrase)
+    {
+        return new StringParser(phrase);
+    }
+    
     public static IParser ToParser(this Func<string, Task<Option<string>>> lambda)
     {
         return new DelegateParserAdapter(lambda);
