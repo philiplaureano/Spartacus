@@ -17,7 +17,7 @@ public class PlusParser : IParser
         // Plus parsers do not match empty strings
         if (input.Length == 0)
             return Option.None<ReadOnlyMemory<char>>();
-        
+
         var matches = new List<ReadOnlyMemory<char>>();
         var currentInput = input;
         var numberOfCharsRead = 0;
@@ -35,11 +35,11 @@ public class PlusParser : IParser
             // Read the remaining characters
             currentInput = input[numberOfCharsRead..];
         }
-        
+
         // There must be at least one match for this parser to be successful
-        if (matches.Count ==0)
+        if (matches.Count == 0)
             return Option.None<ReadOnlyMemory<char>>();
-        
+
         // Return the matches that were found
         var combinedText = matches.SelectMany(m => m.ToString()).ToArray();
         return Option.Some(new string(combinedText).AsMemory());

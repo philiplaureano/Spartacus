@@ -5,8 +5,8 @@ namespace Spartacus.Core.Actions;
 
 internal class TriggerActionOnSuccess : IParser
 {
-    private readonly IParser _parser;
     private readonly Action<IParser, ReadOnlyMemory<char>, ReadOnlyMemory<char>> _actionHandler;
+    private readonly IParser _parser;
 
     public TriggerActionOnSuccess(IParser parser,
         Action<IParser, ReadOnlyMemory<char>, ReadOnlyMemory<char>> actionHandler)

@@ -3,6 +3,8 @@ using Spartacus.Core;
 using Spartacus.Core.Primitives;
 using Xunit;
 
+using static Spartacus.Core.Parsers;
+
 namespace Tests;
 
 public class CharParserTests
@@ -11,7 +13,7 @@ public class CharParserTests
     public async Task ShouldBeAbleToParseChar()
     {
         var targetChar = 'a';
-        var parser = new CharParser(targetChar);
+        var parser = Char(targetChar);
         var result = await parser.ParseAsync("a");
         
         Assert.True(result.HasValue);
@@ -21,7 +23,7 @@ public class CharParserTests
     public async Task ShouldReturnNoneIfTheCharacterDoesNotMatch()
     {
         var targetChar = 'a';
-        var parser = new CharParser(targetChar);
+        var parser = Char(targetChar);
         var result = await parser.ParseAsync("b");
         
         Assert.False(result.HasValue);
@@ -31,7 +33,7 @@ public class CharParserTests
     public async Task ShouldReturnNoneIfTheInputIsEmpty()
     {
         var targetChar = 'a';
-        var parser = new CharParser(targetChar);
+        var parser = Char(targetChar);
         var result = await parser.ParseAsync(string.Empty);
         
         Assert.False(result.HasValue);

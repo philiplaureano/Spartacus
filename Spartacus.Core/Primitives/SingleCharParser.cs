@@ -12,7 +12,7 @@ public abstract class SingleCharParser : IParser
         var currentChar = input.ToArray()[0];
         return ValueTask.FromResult(!IsMatch(currentChar)
             ? Option.None<ReadOnlyMemory<char>>()
-            : Option.Some(new ReadOnlyMemory<char>(new char[] { currentChar })));
+            : Option.Some(new ReadOnlyMemory<char>(new[] { currentChar })));
     }
 
     protected abstract bool IsMatch(char ch);

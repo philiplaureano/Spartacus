@@ -4,7 +4,7 @@ using Spartacus.Core;
 using Spartacus.Core.Composites;
 using Spartacus.Core.Primitives;
 using Xunit;
-
+using static Spartacus.Core.Parsers;
 namespace Tests;
 
 public class KleeneStarParserTests
@@ -12,7 +12,7 @@ public class KleeneStarParserTests
     [Fact(DisplayName = "The kleene star parser should be successful if it matches it sub parser zero or more times")]
     public async Task ShouldParseSuccessfullyIfZeroOrMoreSubParsersAreSuccessful()
     {
-        var digitParser = new DigitParser();
+        var digitParser = Digit;
         var parser = digitParser.ZeroOrMoreInstances();
 
         // Match the non-zero instances

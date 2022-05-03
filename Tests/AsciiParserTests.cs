@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Spartacus.Core;
 using Spartacus.Core.Primitives;
 using Xunit;
+using static Spartacus.Core.Parsers;
 
 namespace Tests;
 
@@ -16,7 +17,7 @@ public class AsciiParserTests
         var charValue = random.Next(asciiRange.Start.Value, asciiRange.End.Value);
         var input = char.ConvertFromUtf32(charValue);
         
-        var parser = new AsciiParser();
+        var parser = Ascii;
         await parser.ParseAsync(input).ShouldBeSuccessful();
     }
 
@@ -25,11 +26,25 @@ public class AsciiParserTests
     {
         var random = new Random();
         var nonAsciiRange = new Range(0x7f, 0xffff);
-        var charValue = random.Next(nonAsciiRange.Start.Value, nonAsciiRange.End.Value);
+        
+        int GetNextValue()
+        {
+            var result = random.Next(nonAsciiRange.Start.Value, nonAsciiRange.End.Value);
+            var surrogateCodePointRange = new Range(0x00d800, 0x00dfff);
             
+            // Skip the surrogate codepoint values
+            while (result >= surrogateCodePointRange.Start.Value && result <= surrogateCodePointRange.End.Value)
+            {
+                result = GetNextValue();
+            }
+            
+            return result;
+        }
+
+        var charValue = GetNextValue();
         var input = char.ConvertFromUtf32(charValue);
         
-        var parser = new AsciiParser();
+        var parser = Ascii;
         await parser.ParseAsync(input).ShouldFail();
     }
 }

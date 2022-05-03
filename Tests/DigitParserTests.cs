@@ -4,6 +4,7 @@ using Optional.Unsafe;
 using Spartacus.Core.Primitives;
 using Xunit;
 
+using static Spartacus.Core.Parsers;
 namespace Tests;
 
 public class DigitParserTests
@@ -11,7 +12,7 @@ public class DigitParserTests
     [Fact(DisplayName = "The digit parser should be able to parse a single digit")]
     public async Task ShouldBeAbleToParseDigit()
     {
-        var parser = new DigitParser();
+        var parser = Digit;
 
         var inputText = "1";
         var input = inputText.AsMemory();
