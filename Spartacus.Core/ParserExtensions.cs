@@ -19,7 +19,11 @@ public static class ParserExtensions
     {
         return new StringParser(phrase);
     }
-    
+
+    public static IParser ToParser(this Func<char, bool> characterChecker)
+    {
+        return new CustomerCharParser(characterChecker);
+    }
     public static IParser ToParser(this Func<string, Task<Option<string>>> lambda)
     {
         return new DelegateParserAdapter(lambda);
