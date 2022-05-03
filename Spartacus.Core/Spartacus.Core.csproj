@@ -17,14 +17,13 @@
         <LangVersion>preview</LangVersion>
         <AssemblyVersion>$(Version)</AssemblyVersion>
         <FileVersion>$(Version)</FileVersion>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageVersion>$(Version)</PackageVersion>
         <TargetFramework>net6.0</TargetFramework>
         <Authors>Philip Laureano</Authors>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Optional" Version="4.0.0"/>
+        <PackageReference Include="Optional" Version="4.0.0" />
     </ItemGroup>
 
 </Project>
