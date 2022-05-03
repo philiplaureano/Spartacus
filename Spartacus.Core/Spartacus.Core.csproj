@@ -11,7 +11,7 @@
         <RepositoryUrl>https://github.com/philiplaureano/spartacus</RepositoryUrl>
         <PackageTags>parsers csharp</PackageTags>
         <Product>Laureano.Spartacus.Core</Product>
-        <Version>1.0.4</Version>
+        <Version>1.0.5</Version>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>preview</LangVersion>
